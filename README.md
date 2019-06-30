@@ -11,4 +11,4 @@ Este container coleta as informações abaixo de todos os containers em um clust
 - Quantidade de Bytes transferidos pela rede
 - Quantidade de Bytes recebidos pela rede
 
-***Aplicação parte integrante do projeto https://github.com/renatoar/prometheus_monitoring_docker
+***Aplicação parte integrante do projeto https://github.com/renatoar/prometheus_monitor_project.git
