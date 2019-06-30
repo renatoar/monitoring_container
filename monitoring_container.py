@@ -1,6 +1,8 @@
 import time
 import requests
+from pymongo import MongoClient
 from datetime import datetime
+database = MongoClient('localhost:17017')['container_monitoring']['metricas']
 
 mins = 0
 #URL base
@@ -32,15 +34,8 @@ while mins != 1:
         byte_tx = dados_nettx["data"]["result"][x]["value"][1] + " Bs"
         byte_rx = dados_netrx["data"]["result"][x]["value"][1] + " Bs"
         
-        array_containers.append([
-            timestampStr,
-            name_container,
-            id_container,
-            cpu_usage,
-            mem_usage,
-            byte_rx,
-            byte_tx
-        ])
-        print (array_containers[x])   
-    #Salvar variaveis no bd
+        resposta = client[timestampStr].insert_one({'timestap': timestampStr, 'name_container': name_container, 'id_container': id_container, 'cpu_usage': cpu_usage, 'mem_usage' : mem_usage, 'byte_tx': byte_tx, 'byte_rx': byte_rx})
+        print(resposta)
+
+    time.sleep(15)
     mins += 1
