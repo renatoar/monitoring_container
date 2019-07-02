@@ -12,7 +12,7 @@ URL_cpu = 'rate(container_cpu_user_seconds_total{image!=\"\"}[5m])*100'
 URL_mem = 'rate(container_memory_usage_bytes{image!=\"\"}[5m])'
 URL_tx = 'rate(container_network_transmit_bytes_total{image!=\"\"}[5m])'
 URL_rx = 'rate(container_network_receive_bytes_total{image!=\"\"}[5m])'
-while mins != 10:
+while True:
     r = requests.get(url = base + URL_cpu)
     j = requests.get(url = base + URL_mem)
     p = requests.get(url = base + URL_tx)
