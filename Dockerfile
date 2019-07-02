@@ -1,5 +1,6 @@
-FROM python:3.7-alpine
-ADD monitoring_container.py /
-RUN pip install requests
-RUN pip install pymongo
-CMD ["python", "monitoring_container.py"]
+FROM python:3
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+COPY monitoring_container.py ./
+RUN pip install --no-cache-dir -r requirements.txt
+CMD python ./monitoring_container.py
